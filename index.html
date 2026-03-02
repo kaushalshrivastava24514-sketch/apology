@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>An Apology</title>
+<title>For Miss Anushka</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
 <style>
 body {
     margin: 0;
     padding: 0;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
     font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
@@ -18,22 +18,22 @@ body {
     height: 100vh;
     text-align: center;
     overflow: hidden;
+    color: white;
 }
 
 .container {
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
+    animation: fadeIn 2s ease forwards;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(12px);
     padding: 50px;
     border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3);
     max-width: 600px;
-    color: white;
 }
 
 h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    margin-bottom: 20px;
+    font-size: 40px;
 }
 
 p {
@@ -42,21 +42,35 @@ p {
 }
 
 button {
-    margin-top: 30px;
+    margin: 20px;
     padding: 12px 30px;
     border: none;
     border-radius: 30px;
     font-size: 16px;
     cursor: pointer;
-    background: white;
-    color: #ee9ca7;
-    font-weight: bold;
     transition: 0.3s;
 }
 
-button:hover {
-    transform: scale(1.1);
-    background: #fff0f3;
+#yesBtn {
+    background: white;
+    color: #ff6f91;
+    font-weight: bold;
+    box-shadow: 0 0 20px rgba(255,255,255,0.8);
+}
+
+#yesBtn:hover {
+    transform: scale(1.15);
+}
+
+#noBtn {
+    background: rgba(255,255,255,0.3);
+    color: white;
+    position: relative;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .heart {
@@ -74,36 +88,47 @@ button:hover {
 
 <body>
 
+<audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mp3">
+</audio>
+
 <div class="container">
     <h1>Dear Miss Anushka,</h1>
+
     <p>
-        I sincerely apologize for my actions.  
-        If my words or behavior caused you even the slightest discomfort,  
-        please know it was never my intention.
+        I sincerely apologize for my mistakes.  
+        If I caused you hurt, I truly regret it.
     </p>
 
     <p>
-        You mean more to me than pride, arguments, or ego.  
-        I value your presence, your smile, and the warmth you bring into my life.
+        You are important to me — more than my ego, more than being right,
+        more than any small misunderstanding.
     </p>
 
     <p>
-        I promise to learn, to grow, and to be better.  
-        Not just in words, but in actions.
+        I promise to grow, to listen, and to be better.
     </p>
 
     <h2>Will you forgive me?</h2>
 
-    <button onclick="forgive()">Click Here</button>
+    <button id="yesBtn" onclick="forgive()">Yes ❤️</button>
+    <button id="noBtn" onmouseover="moveButton()">No 😢</button>
 </div>
 
 <script>
 function forgive() {
-    alert("Thank you for giving me another chance ❤️");
+    document.body.innerHTML = "<h1 style='color:white;'>Thank you for forgiving me ❤️<br>You mean everything to me.</h1>";
+}
+
+function moveButton() {
+    const button = document.getElementById("noBtn");
+    button.style.position = "absolute";
+    button.style.left = Math.random() * 80 + "vw";
+    button.style.top = Math.random() * 80 + "vh";
 }
 
 // Floating hearts
-for(let i = 0; i < 20; i++) {
+for(let i = 0; i < 25; i++) {
     let heart = document.createElement("div");
     heart.className = "heart";
     heart.innerHTML = "❤";
